@@ -11,7 +11,7 @@ import UIKit
 
 extension UIView{
     
-    func pinAllSides()->[NSLayoutConstraint]{
+    public func pinAllSides()->[NSLayoutConstraint]{
         guard let superview = superview else {fatalError("Pinning must be done in a superview")}
         return [
             topAnchor.constraint(equalTo: superview.topAnchor),
@@ -22,7 +22,7 @@ extension UIView{
     }
     
     
-    func roundCorners(_ corners: CACornerMask, radius: CGFloat) {
+    public func roundCorners(_ corners: CACornerMask, radius: CGFloat) {
         if #available(iOS 11, *) {
             self.layer.cornerRadius = radius
             self.layer.maskedCorners = corners
@@ -48,7 +48,7 @@ extension UIView{
     }
     
     
-    func layout(_ invalidatePrevious:Bool = false,using closure:(LayoutProxy) -> Void){
+    public func layout(_ invalidatePrevious:Bool = false,using closure:(LayoutProxy) -> Void){
         if invalidatePrevious{removeConstraints(self.constraints)}
         translatesAutoresizingMaskIntoConstraints = false
         closure(LayoutProxy(view:self))
@@ -59,7 +59,7 @@ extension UIView{
 extension CALayer{
     
     
-    func roundCorners(_ corners: CACornerMask?, radius:CGFloat) {
+    public func roundCorners(_ corners: CACornerMask?, radius:CGFloat) {
         guard let corners = corners else{
             //cornerRadius = radius
             return
@@ -89,7 +89,7 @@ extension CALayer{
     }
     
     @discardableResult
-    func wrapCornerRadiusMin(radius:CGFloat)->CGFloat{
+    public func wrapCornerRadiusMin(radius:CGFloat)->CGFloat{
         if cornerRadius > bounds.size.min.halved{
             cornerRadius = bounds.size.min.halved
             return bounds.size.min.halved

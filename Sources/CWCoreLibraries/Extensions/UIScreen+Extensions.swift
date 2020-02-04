@@ -11,14 +11,14 @@ import UIKit
 extension UIScreen{
     
     
-    static var orientation:Orientation{
+    public static var orientation:Orientation{
         let size = main.bounds
         if size.width > size.height{
             return .landscape
         }
         return .potrait
     }
-    enum SizeNative:Int{
+    public enum SizeNative:Int{
         case iPad_norm = 3145728
         case pro_10_5 = 3709632
         case pro_11 = 3983184
@@ -26,7 +26,7 @@ extension UIScreen{
     }
 
     
-    enum Handle{
+    public enum Handle{
         
         case pad_norm
         case pad_pro_9_7
@@ -43,12 +43,12 @@ extension UIScreen{
         case ipad
     }
     
-    enum Orientation{
+    public enum Orientation{
         case potrait
         case landscape
     }
     
-    static func hasNotch()->Bool{
+    public static func hasNotch()->Bool{
         
         let handle = main.screenType()
         switch handle {
@@ -61,7 +61,7 @@ extension UIScreen{
         }
     }
     
-    func screenType()->Handle{
+    public func screenType()->Handle{
         let height = UIScreen.main.bounds.height
         let interface = UIDevice.current.userInterfaceIdiom
         
@@ -77,7 +77,7 @@ extension UIScreen{
         
     }
     
-    func iPadHandleFor(native size:CGSize)->Handle{
+    public func iPadHandleFor(native size:CGSize)->Handle{
         if size.product >= SizeNative.pro_12_9.rawValue{
             return .pad_pro_maxx
         }
@@ -94,7 +94,7 @@ extension UIScreen{
 
     }
     
-    func handleFor(height:CGFloat)->Handle{
+    public func handleFor(height:CGFloat)->Handle{
     
         
         if height > 890{

@@ -11,7 +11,7 @@ import UIKit
 
 
 extension UIImage {
-    func rotate(radians: Float) -> UIImage? {
+    public func rotate(radians: Float) -> UIImage? {
         var newSize = CGRect(origin: CGPoint.zero, size: self.size).applying(CGAffineTransform(rotationAngle: CGFloat(radians))).size
         // Trim off the extremely small float value to prevent core graphics from rounding it up
         newSize.width = floor(newSize.width)
@@ -33,7 +33,7 @@ extension UIImage {
         return newImage
     }
     
-    func fixImageOrientation()->UIImage?{
+    public func fixImageOrientation()->UIImage?{
         if imageOrientation == .up {return self}
         UIGraphicsBeginImageContext(size)
         draw(in: CGRect(origin: .zero, size: size))

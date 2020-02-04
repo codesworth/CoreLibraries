@@ -17,26 +17,26 @@ public struct AttributedText{
     private let attibutedText:NSMutableAttributedString = NSMutableAttributedString()
     public private(set) var attributes:[NSAttributedString.Key:Any] = [:]
     private var string:String = ""
-    init(string:String) {
+    public init(string:String) {
         self.string = string
     }
     
-    var attributedString:NSAttributedString{
+    public var attributedString:NSAttributedString{
         return NSAttributedString(string: string, attributes: attributes)
     }
     
-    func attributed(_ string:String)->NSAttributedString{
+    public func attributed(_ string:String)->NSAttributedString{
         return NSAttributedString(string: string, attributes: attributes)
     }
     
-    func height(of string:String? = nil, with width: CGFloat) -> CGFloat {
+    public func height(of string:String? = nil, with width: CGFloat) -> CGFloat {
         let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
         
         let boundingBox = (string ?? self.string).boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes:attributes, context: nil)
         return ceil(boundingBox.height)
     }
     
-    func width(of string:String? = nil, with height: CGFloat) -> CGFloat {
+    public func width(of string:String? = nil, with height: CGFloat) -> CGFloat {
         let constraintRect = CGSize(width: .greatestFiniteMagnitude, height: height)
         let boundingBox = (string ?? self.string).boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
         
@@ -50,7 +50,7 @@ public struct AttributedText{
 extension AttributedText{
     
     
-    struct Ligatures{
+    public struct Ligatures{
         let value:Int
         
         static let yes = Ligatures(value: 1)
@@ -61,7 +61,7 @@ extension AttributedText{
         }
     }
     
-    struct TextEffect{
+    public struct TextEffect{
         let value:NSString
         static let letterpress = TextEffect(value: NSAttributedString.TextEffectStyle.letterpressStyle as NSString)
         private init(value:NSString){
@@ -69,7 +69,7 @@ extension AttributedText{
         }
     }
     
-    enum Attribute{
+    public enum Attribute{
 
         
            case font(UIFont)
@@ -140,7 +140,7 @@ extension AttributedText{
             case allowsDefaultTighteningForTruncation(Bool)
        }
     
-    enum GlyphForm:Int {
+    public enum GlyphForm:Int {
         case horizontal = 0
         case vertical = 1
     }
@@ -151,7 +151,7 @@ extension AttributedText{
 
 extension AttributedText{
     mutating
-    func attributing(_ attribute:AttributedText.Attribute)->AttributedText{
+    public func attributing(_ attribute:AttributedText.Attribute)->AttributedText{
         var attrs = self.attributes
         switch attribute{
         case .font(let font):
@@ -384,10 +384,10 @@ extension AttributedText{
     
     
     
-    struct TextShadow{
+    public struct TextShadow{
         private let shadow:NSShadow
         
-        static func dropShadow(offset:CGSize = [0,2], blur:CGFloat = 2, color:UIColor = .black, opacity:CGFloat = 0.6)->TextShadow{
+        public static func dropShadow(offset:CGSize = [0,2], blur:CGFloat = 2, color:UIColor = .black, opacity:CGFloat = 0.6)->TextShadow{
             let shadow = NSShadow()
             shadow.shadowBlurRadius = blur
             shadow.shadowColor = color
@@ -395,7 +395,7 @@ extension AttributedText{
             return TextShadow(shadow:shadow)
         }
         
-        var getShadow:NSShadow{
+        public var getShadow:NSShadow{
             return shadow
         }
     }
@@ -404,7 +404,7 @@ extension AttributedText{
 
 extension AttributedText{
     
-    typealias Ranges = Array<Range<String.Index>>
+    public typealias Ranges = Array<Range<String.Index>>
     
     fileprivate var RangeOfString:Range<String.Index>{
         return string.startIndex..<string.startIndex
@@ -431,7 +431,7 @@ extension AttributedText{
         return ranges
     }
     
-    func attributing(_ attibutes:[AttributedText.Attribute])->AttributedText{
+    public func attributing(_ attibutes:[AttributedText.Attribute])->AttributedText{
         return AttributedText(string: "")
     }
 }
@@ -439,9 +439,9 @@ extension AttributedText{
 
 extension AttributedText{
     
-    struct WrtingDirection{
+    public struct WrtingDirection{
         
-        enum Direction:Int{
+        public enum Direction:Int{
             case leftToRightEmbedding = 0
             case rightToLeftEmbedding = 1
             case leftToRightOverride = 2
@@ -451,7 +451,7 @@ extension AttributedText{
         init(_ directions:[Direction]){
             self.directions = directions
         }
-        var attributableValues:[NSNumber]{
+        public var attributableValues:[NSNumber]{
             return directions.compactMap{NSNumber(integerLiteral: $0.rawValue)}
         }
     }
@@ -461,14 +461,14 @@ extension AttributedText{
 
 extension AttributedText{
     
-    struct Link {
+    public struct Link {
         let url:String
         
-        init(_ url:String){
+        public init(_ url:String){
             self.url = url
         }
         
-        var linkURL:Any{
+        public var linkURL:Any{
             return NSURL(string: url) ?? url
         }
     }
@@ -478,12 +478,12 @@ extension AttributedText{
 
 extension String{
     
-    func addingAttribute(_ attribute:AttributedText.Attribute)->AttributedText{
+    public func addingAttribute(_ attribute:AttributedText.Attribute)->AttributedText{
         var attr = AttributedText(string: self)
         return attr.attributing(attribute)
     }
     
-    func attributing(_ attributes:[AttributedText.Attribute])->NSAttributedString{
+    public func attributing(_ attributes:[AttributedText.Attribute])->NSAttributedString{
         var attrs:[NSAttributedString.Key:Any] = [:]
         attributes.forEach{
             switch $0{

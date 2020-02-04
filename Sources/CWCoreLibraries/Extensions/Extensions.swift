@@ -106,7 +106,7 @@ extension UIView{
 
 extension UIScrollView{
     
-    class func panelScrollView()->UIScrollView{
+    public class func panelScrollView()->UIScrollView{
         let scroll = UIScrollView(frame: .zero)
         scroll.bounces = true
         scroll.isScrollEnabled = true
