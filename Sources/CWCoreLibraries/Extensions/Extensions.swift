@@ -11,7 +11,7 @@ import UIKit
 
 
 extension Int{
-    func isInRange(specifiedRange:Int, with value:Int)->Bool{
+    public func isInRange(specifiedRange:Int, with value:Int)->Bool{
         let val = (self - value).magnitude
         return val <= specifiedRange
     }
@@ -20,14 +20,14 @@ extension Int{
 
 extension UIDevice{
     
-    class var idiom:UIUserInterfaceIdiom{
+    public class var idiom:UIUserInterfaceIdiom{
         return current.userInterfaceIdiom
     }
 }
 
 
 extension CGFloat{
-    static var fixedWidth:CGFloat{
+    public static var fixedWidth:CGFloat{
         let idiom = UIDevice.current.userInterfaceIdiom
         if idiom == .phone{
             return UIScreen.main.bounds.width * 0.9
@@ -37,7 +37,7 @@ extension CGFloat{
         return 0
     }
     
-    static var fixedWidthHG:CGFloat{
+    public static var fixedWidthHG:CGFloat{
         
         let idiom = UIDevice.current.userInterfaceIdiom
         if idiom == .phone{
@@ -48,15 +48,15 @@ extension CGFloat{
         return 0
     }
     
-    static var fixedHeight:CGFloat{
+    public static var fixedHeight:CGFloat{
         return UIScreen.main.bounds.height * 0.8
     }
     
-    var halved:CGFloat{
+    public var halved:CGFloat{
         return self / 2
     }
         
-    static func Angle(_ degree:CGFloat)-> CGFloat{
+    public static func Angle(_ degree:CGFloat)-> CGFloat{
         return (.pi * degree) / 180
     }
 }
