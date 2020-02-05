@@ -67,7 +67,7 @@ extension CGFloat{
 
 extension Array{
     
-    mutating func push(_ element:Element){
+    public mutating func push(_ element:Element){
         if count > 10 {
             self = Array(dropFirst())
             append(element)
@@ -76,11 +76,11 @@ extension Array{
         }
     }
     
-    mutating func pop()->Element{
+    public mutating func pop()->Element{
         return popLast()!
     }
     
-    var isMulti:Bool{
+    public var isMulti:Bool{
         return count > 1
     }
 }
@@ -88,25 +88,19 @@ extension Array{
 
 extension Int{
     
-    func nsNumber()->NSNumber{
+    public func nsNumber()->NSNumber{
         return NSNumber(value: self)
     }
 }
 
 
-extension UIView{
-    
-    
-    
-    
-}
 
 
 
 
 extension UIScrollView{
     
-    public class func panelScrollView()->UIScrollView{
+    public class func `default`()->UIScrollView{
         let scroll = UIScrollView(frame: .zero)
         scroll.bounces = true
         scroll.isScrollEnabled = true
@@ -117,7 +111,7 @@ extension UIScrollView{
 
 
 extension UIImageView{
-    func setImageMaskColor(_ color:UIColor){
+    public func setImageMaskColor(_ color:UIColor){
         let maskImage = image?.withRenderingMode(.alwaysTemplate)
         image = maskImage
         tintColor = color
@@ -129,13 +123,13 @@ extension UIImage{
     
     
     
-    var byteSize:Int{
+    public var byteSize:Int{
         return pngData()?.count ?? 0
     }
 
 
     
-    func downSampleImage(size:CGSize)->UIImage?{
+    public func downSampleImage(size:CGSize)->UIImage?{
         guard let data = pngData() else {return nil}
         let option = [kCGImageSourceShouldCache: false] as CFDictionary
         guard let source = CGImageSourceCreateWithData(data as CFData, option) else {return nil}
@@ -153,7 +147,7 @@ extension UIImage{
 
 
 extension UIViewController {
-        func add(_ child: UIViewController, to parentView:UIView? = nil) {
+        public func add(_ child: UIViewController, to parentView:UIView? = nil) {
             addChild(child)
             if let v = parentView{
                 v.addSubview(child.view)
@@ -163,7 +157,7 @@ extension UIViewController {
             child.didMove(toParent: self)
         }
         
-        func removeFrom() {
+        public func removeFrom() {
             guard parent != nil else {
                 return
             }
@@ -176,15 +170,15 @@ extension UIViewController {
         
 }
 
-func toSignficant(x:Double)->String{
+public func toSignficant(x:Double)->String{
    return String(format: "%.1f", x)
 }
 
-func toSignficant(x:Float)->String{
+public func toSignficant(x:Float)->String{
     return String(format: "%.1f", x)
 }
 
-func toSignficant(x:CGFloat)->String{
+public func toSignficant(x:CGFloat)->String{
     return String(format: "%.1f", x)
 }
 
