@@ -7,13 +7,13 @@
 
 import Foundation
 
-protocol Identity {
+public protocol Identity {
     static var Identifier:String {get}
 }
 
 
 extension Identity{
-    static var Identifier:String{
+    public static var Identifier:String{
         return "\(Self.self)"
     }
 }
