@@ -13,7 +13,7 @@ public struct LayoutProperty<Anchor:LayoutAnchor> {
     fileprivate let anchor:Anchor
 }
 
-open class LayoutProxy{
+public class LayoutProxy{
     
     public lazy var leading = property(with: view.leadingAnchor)
     public lazy var trailing = property(with: view.trailingAnchor)
