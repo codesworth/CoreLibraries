@@ -5,7 +5,7 @@
 //  Created by Shadrach Mensah on 05/02/2020.
 //
 
-import Foundation
+import UIKit
 
 
 extension CALayer{
@@ -13,13 +13,13 @@ extension CALayer{
     
     public func roundCorners(_ corners: CACornerMask?, radius:CGFloat) {
         guard let corners = corners else{
-            //cornerRadius = radius
+            cornerRadius = radius
             return
         }
-//        if #available(iOS 11, *) {
-//            maskedCorners = corners
-//            cornerRadius = radius
-//        } else {
+        if #available(iOS 11, *) {
+            maskedCorners = corners
+            cornerRadius = radius
+        } else {
             var cornerMask = UIRectCorner()
             if(corners.contains(.layerMinXMinYCorner)){
                 cornerMask.insert(.topLeft)
@@ -37,7 +37,7 @@ extension CALayer{
             let mask = CAShapeLayer()
             mask.path = path.cgPath
             self.mask = mask
-       // }
+       }
     }
     
     @discardableResult
