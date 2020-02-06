@@ -11,14 +11,14 @@ import UIKit
 
 extension UIView{
     
-    func dropShadow(_ radius:CGFloat = 2.0, color:UIColor = .black, _ opacity:Float = 0.4, _ offset:CGSize = [0,4]){
+    public func dropShadow(_ radius:CGFloat = 2.0, color:UIColor = .black, _ opacity:Float = 0.4, _ offset:CGSize = [0,4]){
         layer.shadowRadius = radius
         layer.shadowColor = color.cgColor
         layer.shadowOpacity = opacity
         layer.shadowOffset = offset
     }
     
-    func dropCorner(_ radius:CGFloat = 3.0){
+    public func dropCorner(_ radius:CGFloat = 3.0){
         layer.cornerRadius = radius
     }
     
