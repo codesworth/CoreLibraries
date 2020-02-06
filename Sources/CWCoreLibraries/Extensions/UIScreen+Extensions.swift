@@ -10,6 +10,14 @@ import UIKit
 
 extension UIScreen{
     
+    public static var height:CGFloat{
+        return main.bounds.height
+    }
+    
+    public static var width:CGFloat{
+        return main.bounds.width
+    }
+    
     
     public static var orientation:Orientation{
         let size = main.bounds
