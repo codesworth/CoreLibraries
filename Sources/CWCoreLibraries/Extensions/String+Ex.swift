@@ -25,6 +25,13 @@ extension String {
         return ceil(boundingBox.width)
     }
     
+    public func height(withConstrainedWidth width: CGFloat, attributes:[NSAttributedString.Key:Any]) -> CGFloat {
+        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
+        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
+        
+        return ceil(boundingBox.height)
+    }
+    
     
 }
 
