@@ -64,6 +64,15 @@ extension UIView{
         translatesAutoresizingMaskIntoConstraints = false
         closure(LayoutProxy(view:self))
     }
+    
+    public func pintToAllSidesOf(_ superView:UIView){
+        layout{
+            $0.leading == superView.leadingAnchor
+            $0.trailing == superView.trailingAnchor
+            $0.bottom == superView.bottomAnchor
+            $0.top == superView.topAnchor
+        }
+    }
 }
 
 
