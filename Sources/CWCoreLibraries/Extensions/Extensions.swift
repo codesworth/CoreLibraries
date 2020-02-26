@@ -59,6 +59,10 @@ extension CGFloat{
     public static func Angle(_ degree:CGFloat)-> CGFloat{
         return (.pi * degree) / 180
     }
+    
+    public func by<T:BinaryFloatingPoint>(_ value:T)->CGFloat{
+        return self * CGFloat(value)
+    }
 }
 
 
