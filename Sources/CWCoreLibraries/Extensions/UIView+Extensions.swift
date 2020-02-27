@@ -65,12 +65,12 @@ extension UIView{
         closure(LayoutProxy(view:self))
     }
     
-    public func pintToAllSidesOf(_ superView:UIView){
+    public func pintToAllSidesOf(_ superView:UIView, insets:UIEdgeInsets = .zero){
         layout{
-            $0.leading == superView.leadingAnchor
-            $0.trailing == superView.trailingAnchor
-            $0.bottom == superView.bottomAnchor
-            $0.top == superView.topAnchor
+            $0.leading == superView.leadingAnchor + insets.left
+            $0.trailing == superView.trailingAnchor - insets.right
+            $0.bottom == superView.bottomAnchor - insets.bottom
+            $0.top == superView.topAnchor + insets.top
         }
     }
 }
