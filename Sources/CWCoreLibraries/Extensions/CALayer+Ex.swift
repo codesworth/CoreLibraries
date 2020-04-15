@@ -49,5 +49,9 @@ extension CALayer{
         return radius
     }
     
+    public func borderlize(width:CGFloat = 1, color:UIColor){
+        borderWidth = width
+        borderColor = color.cgColor
+    }
     
 }
