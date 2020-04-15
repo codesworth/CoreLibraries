@@ -42,7 +42,7 @@ extension UIImage {
         return newImage
     }
     
-    func dataFromJPEG()-> Data?{
+    public func dataFromJPEG()-> Data?{
         var compression:CGFloat = 1
         if let data = jpegData(compressionQuality: compression){
             if data.count < ImageSizes.min.rawValue{
