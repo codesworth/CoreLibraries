@@ -194,7 +194,7 @@ extension AttributedText{
             attrs.updateValue(NSNumber(value: val), forKey: .strikethroughStyle)
             break
         case .underlineStyle(let val):
-            attrs.updateValue(NSNumber(value: val), forKey: .strikethroughStyle)
+            attrs.updateValue(NSNumber(value: val), forKey: .underlineStyle)
             break
         case .link(let link):
             attrs.updateValue(link.linkURL, forKey: .link)
